@@ -73,7 +73,8 @@
     "preconditions": "^1.0.7",
     "protobufjs": "=3.0.0",
     "sjcl": "=1.0.1",
-    "socks5-client": "~0.3.6"
+    "socks5-client": "~0.3.6",
+    "bitzeny-yescrypt": "git://github.com/BitzenyCoreDevelopers/node-bitzeny-yescrypt.git"
   },
   "testling": {
     "harness": "mocha-bdd",
