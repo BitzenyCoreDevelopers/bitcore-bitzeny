@@ -1,14 +1,21 @@
 var base58 = require('../lib/Base58').base58Check;
+var bech32 = require('bech32');
+var networks = require('../networks');
 
 // Constructor.  Takes the following forms:
 //   new EncodedData(<base58_address_string>)
+//   new EncodedData(<Bech32_address_string>)
 //   new EncodedData(<binary_buffer>)
 //   new EncodedData(<data>, <encoding>)
 //   new EncodedData(<version>, <20-byte-hash>)
 function EncodedData(data, encoding) {
   this.data = data;
   if (!encoding && (typeof data == 'string')) {
-    encoding = 'base58';
+    if (data.indexOf(networks['livenet'].bech32Prefix) === 0 || data.indexOf(networks['testnet'].bech32Prefix) === 0){
+      encoding = 'bech32';
+    }else{
+      encoding = 'base58';
+    }
     this.converters = this.encodings[encoding].converters;
     this._encoding = this.encodings[encoding]._encoding;
   } else {
@@ -65,6 +72,11 @@ EncodedData.prototype.toString = function() {
   return this.as('base58');
 };
 
+// convert to a string (in bech32 form)
+EncodedData.prototype.toString = function() {
+  return this.as('bech32');
+};
+
 // utility
 EncodedData.prototype.doAsBinary = function(callback) {
   var oldEncoding = this.encoding();
@@ -90,6 +102,9 @@ var encodings = {
       'base58': function() {
         return base58.encode(this.data);
       },
+      'bech32': function() {
+        return bech32.encode(this.data.prefix,this.data.words);
+      },
       'hex': function() {
         return this.data.toString('hex');
       },
@@ -110,7 +125,16 @@ var encodings = {
       },
     },
   },
-
+ 'bech32': {
+    converters: {
+      'binary': function() {
+        return bech32.decode(this.data);
+      },
+      'hex': function() {
+        return this.withEncoding('binary').as('hex');
+      },
+    },
+  },
   'hex': {
     converters: {
       'binary': function() {

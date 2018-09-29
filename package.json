@@ -74,7 +74,8 @@
     "protobufjs": "^6.8.8",
     "sjcl": "=1.0.1",
     "socks5-client": "~0.3.6",
-    "bitzeny-yescrypt": "git://github.com/BitzenyCoreDevelopers/node-bitzeny-yescrypt.git"
+    "bitzeny-yescrypt": "git://github.com/BitzenyCoreDevelopers/node-bitzeny-yescrypt.git",
+    "bech32": "git://github.com/bitcoinjs/bech32.git"
   },
   "testling": {
     "harness": "mocha-bdd",
