@@ -120,7 +120,7 @@
     "istanbul": "~0.2.6",
     "mocha": ">=1.15.1",
     "optimist": "0.6.1",
-    "request": "2.39.0",
+    "request": "2.88.0",
     "sinon": "^1.10.3",
     "uglifyify": "=1.2.3"
   }
