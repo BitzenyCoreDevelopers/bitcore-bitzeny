@@ -74,7 +74,11 @@ EncodedData.prototype.toString = function() {
 
 // convert to a string (in bech32 form)
 EncodedData.prototype.toString = function() {
-  return this.as('bech32');
+  try {
+    return this.as('bech32');
+  } catch (err) {
+    return this.as('base58');
+  }
 };
 
 // utility
