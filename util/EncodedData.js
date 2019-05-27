@@ -67,17 +67,12 @@ EncodedData.prototype.validate = function() {
   this._validate();
 };
 
-// convert to a string (in base58 form)
-EncodedData.prototype.toString = function() {
-  return this.as('base58');
-};
-
-// convert to a string (in bech32 form)
+// convert to a string
 EncodedData.prototype.toString = function() {
   try {
-    return this.as('bech32');
-  } catch (err) {
     return this.as('base58');
+  } catch (err) {
+    return this.as('bech32');
   }
 };
 
