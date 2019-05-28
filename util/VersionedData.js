@@ -25,7 +25,11 @@ VersionedData.prototype.version = function(num) {
     });
     return num;
   }
-  return this.as('binary').readUInt8(0);
+  if ( Buffer.isBuffer(this.as('binary')) ) {
+    return this.as('binary').readUInt8(0);
+  }else{
+    return this.data.prefix;
+  }
 };
 
 // get or set the payload data (as a Buffer object)
