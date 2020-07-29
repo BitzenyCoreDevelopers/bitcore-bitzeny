@@ -67,7 +67,7 @@
     "bufferput": "git://github.com/bitpay/node-bufferput.git",
     "buffers": "=0.1.1",
     "buffertools": "=2.1.2",
-    "elliptic": "=1.0.0",
+    "elliptic": "=6.5.3",
     "hash.js": "=0.3.2",
     "jsrsasign": "=0.0.3",
     "preconditions": "^1.0.7",
