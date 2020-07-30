@@ -69,7 +69,7 @@
     "buffertools": "=2.1.2",
     "elliptic": "=1.0.0",
     "hash.js": "=0.3.2",
-    "jsrsasign": "=0.0.3",
+    "jsrsasign": "=8.0.20",
     "preconditions": "^1.0.7",
     "protobufjs": "^6.8.8",
     "sjcl": "=1.0.1",
